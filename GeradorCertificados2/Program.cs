@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using GeradorCertificados2.Data;
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<GeradorCertificados2Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("GeradorCertificados2Context") ?? throw new InvalidOperationException("Connection string 'GeradorCertificados2Context' not found.")));
 
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<BaseDbContext>(options => 
+    options.UseNpgsql(builder.Configuration.GetConnectionString("GeradorCertificados") ?? throw new InvalidOperationException("Connection string 'GeradorCertificados2Context' not found."))
+);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -12,9 +12,9 @@ namespace GeradorCertificados2.Controllers
 {
     public class AlunoController : Controller
     {
-        private readonly GeradorCertificados2Context _context;
+        private readonly BaseDbContext _context;
 
-        public AlunoController(GeradorCertificados2Context context)
+        public AlunoController(BaseDbContext context)
         {
             _context = context;
         }
@@ -58,12 +58,21 @@ namespace GeradorCertificados2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Matricula")] Aluno aluno)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(aluno);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(aluno);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
             return View(aluno);
         }
 

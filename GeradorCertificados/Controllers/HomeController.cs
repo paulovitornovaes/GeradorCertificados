@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
+using GeradorCertificados.Models;
 using Microsoft.AspNetCore.Mvc;
-using GeradorCertificados2.Models;
 
-namespace GeradorCertificados2.Controllers;
+namespace GeradorCertificados.Controllers;
 
 public class HomeController : Controller
 {

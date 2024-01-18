@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using GeradorCertificados2.Data;
+using GeradorCertificados.Data;
+using GeradorCertificados.Services;
+using GeradorCertificados.Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,10 @@ builder.Services.AddSwaggerGen(c =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddTransient<ICargaService, CargaService>();
+
 
 var app = builder.Build();
 

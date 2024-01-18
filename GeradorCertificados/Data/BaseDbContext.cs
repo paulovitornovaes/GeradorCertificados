@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GeradorCertificados.Models;
 using Microsoft.EntityFrameworkCore;
-using GeradorCertificados2.Models;
 
-namespace GeradorCertificados2.Data
+namespace GeradorCertificados.Data
 {
     public class BaseDbContext : DbContext
     {
@@ -15,5 +15,6 @@ namespace GeradorCertificados2.Data
         }
 
         public DbSet<Aluno> Aluno { get; set; }
+        public DbSet<Evento> Evento { get; set; }
     }
 }

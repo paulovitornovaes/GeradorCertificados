@@ -1,4 +1,4 @@
-namespace GeradorCertificados2.Models;
+namespace GeradorCertificados.Models;
 
 public class ErrorViewModel
 {

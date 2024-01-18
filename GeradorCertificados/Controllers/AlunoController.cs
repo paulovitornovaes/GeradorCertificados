@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GeradorCertificados.Data;
+using GeradorCertificados.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GeradorCertificados2.Data;
-using GeradorCertificados2.Models;
 
-namespace GeradorCertificados2.Controllers
+namespace GeradorCertificados.Controllers
 {
     public class AlunoController : Controller
     {
@@ -36,7 +36,7 @@ namespace GeradorCertificados2.Controllers
             }
 
             var aluno = await _context.Aluno
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.AlunoId == id);
             if (aluno == null)
             {
                 return NotFound();
@@ -99,7 +99,7 @@ namespace GeradorCertificados2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Matricula")] Aluno aluno)
         {
-            if (id != aluno.Id)
+            if (id != aluno.AlunoId)
             {
                 return NotFound();
             }
@@ -113,7 +113,7 @@ namespace GeradorCertificados2.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AlunoExists(aluno.Id))
+                    if (!AlunoExists(aluno.AlunoId))
                     {
                         return NotFound();
                     }
@@ -136,7 +136,7 @@ namespace GeradorCertificados2.Controllers
             }
 
             var aluno = await _context.Aluno
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.AlunoId == id);
             if (aluno == null)
             {
                 return NotFound();
@@ -166,7 +166,7 @@ namespace GeradorCertificados2.Controllers
 
         private bool AlunoExists(int id)
         {
-          return (_context.Aluno?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Aluno?.Any(e => e.AlunoId == id)).GetValueOrDefault();
         }
     }
 }

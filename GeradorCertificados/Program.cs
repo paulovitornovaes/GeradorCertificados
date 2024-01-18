@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using GeradorCertificados2.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BaseDbContext>(options => 
     options.UseNpgsql(builder.Configuration.GetConnectionString("GeradorCertificados") ?? throw new InvalidOperationException("Connection string 'GeradorCertificados2Context' not found."))
 );
+
+// Adicione essas linhas para configurar o Swagger
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Nome do Seu Projeto", Version = "v1" });
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -27,6 +34,14 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+// Adicione essas linhas para habilitar o Swagger no pipeline de solicitação HTTP
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Nome do Seu Projeto v1");
+    c.RoutePrefix = "swagger";
+});
 
 app.MapControllerRoute(
     name: "default",

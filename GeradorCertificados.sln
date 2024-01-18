@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorCertificados2", "GeradorCertificados2\GeradorCertificados2.csproj", "{C18EA0F8-8594-46EF-B904-E458D05F9D6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorCertificados", "GeradorCertificados\GeradorCertificados.csproj", "{C18EA0F8-8594-46EF-B904-E458D05F9D6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,4 +10,5 @@ public class Evento
     //[Column("EventoId")]
     public int EventoId { get; set; }
     public string EventoTitulo { get; set; }
+    public ICollection<Aluno> Alunos { get; set; }
 }

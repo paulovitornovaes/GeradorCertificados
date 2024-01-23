@@ -22,11 +22,11 @@ public class AlunoConfiguration : IEntityTypeConfiguration<Aluno>
                 "Aluno_Evento",
                 y => y.HasOne<Evento>()
                     .WithMany()
-                    .HasForeignKey("AlunoId")
+                    .HasForeignKey("EventoId")
                     .OnDelete(DeleteBehavior.Cascade),
                 y => y.HasOne<Aluno>()
                     .WithMany()
-                    .HasForeignKey("EventoId")
+                    .HasForeignKey("AlunoId")
                     .OnDelete(DeleteBehavior.Cascade)
             );
             

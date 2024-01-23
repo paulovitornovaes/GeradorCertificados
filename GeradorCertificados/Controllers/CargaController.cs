@@ -28,7 +28,13 @@ public class CargaController : Controller
         // Caminho do arquivo CSV (ajuste conforme necessário)
         string csvFilePath = "C:\\Users\\paulo\\Documents\\dasi.csv";
         _cargaService.carregarCarga(csvFilePath, tituloEvento);
-        return Ok();
+
+        // Adicionar uma mensagem TempData para sucesso
+        TempData["ToastrMessage"] = "A carga foi importada com sucesso.";
+
+        // Redirecionar de volta para a página principal
+        return RedirectToAction("Index", "Home");
     }
+
 
 }

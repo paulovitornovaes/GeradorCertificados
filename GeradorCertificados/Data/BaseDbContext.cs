@@ -12,6 +12,7 @@ namespace GeradorCertificados.Data
         public BaseDbContext (DbContextOptions<BaseDbContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public DbSet<Aluno> Aluno { get; set; }

@@ -22,7 +22,7 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddTransient<ICargaService, CargaService>();
-
+builder.Services.AddTransient<IEventoService, EventoService>();
 
 var app = builder.Build();
 
